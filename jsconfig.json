@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    // "baseUrl": ".",
+    "jsx": "preserve",
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["./components/*"],
+      "@redux/*": ["./redux/*"],
+      "@utilities/*": ["./utilities/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "**/node_modules", "dist"]
+}
