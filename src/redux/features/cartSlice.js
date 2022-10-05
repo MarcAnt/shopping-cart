@@ -2,7 +2,7 @@ import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   cartItems: [],
-  quatity: 0,
+  quantity: 0,
   total: 0, //global total
   maxQuantity: 10,
 };
@@ -47,14 +47,15 @@ const cartSlice = createSlice({
     },
 
     calculateTotals: (state) => {
-      let price = 0;
-      let quantity = 0;
-      state.cartItems.forEach((item) => {
-        quantity += item.quantity;
-        price += item.price * item.quantity;
-      });
-      state.quatity = quantity;
+      const quantity = state.cartItems
+        .map((items) => items.quantity)
+        .reduce((prev, act) => prev + act, 0);
 
+      const price = state.cartItems
+        .map((items) => items.price * items.quantity)
+        .reduce((prev, act) => prev + act, 0);
+
+      state.quantity = quantity;
       state.price = price;
     },
   },
@@ -64,7 +65,7 @@ export const { clearCart, removeItem, calculateTotals, addToCart } =
   cartSlice.actions;
 
 export const getTotal = (state) => state.cart.price;
-export const getQuantities = (state) => state.cart.quatity;
+export const getQuantities = (state) => state.cart.quantity;
 export const getItems = (state) => state.cart.cartItems;
 export const getMaxQuantity = (state) => state.cart.maxQuantity;
 

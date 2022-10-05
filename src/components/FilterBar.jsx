@@ -25,6 +25,14 @@ const FilterBar = () => {
         alignItems={"center"}
         w={{ base: "100%", sm: "100%", md: "100%", lg: "65%", xl: "60%" }}
         gap={"5"}
+        flexDirection={{
+          base: "row",
+          xs: "column",
+          sm: "column",
+          md: "row",
+          lg: "row",
+          xl: "row",
+        }}
       >
         <Text as={"span"} fontWeight={"bold"} fontSize={"lg"}>
           Filter:

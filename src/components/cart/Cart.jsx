@@ -64,7 +64,7 @@ export const Cart = () => {
             color={"white"}
             data-testid="cart-counter"
           >
-            {totalQuantity || 0.0}
+            {totalQuantity}
           </Box>
         )}
         Shopping Cart
@@ -88,7 +88,10 @@ export const Cart = () => {
               justifyContent={"space-between"}
               my={5}
             >
-              <Text fontSize={"lg"}>Items: {items.length}</Text>
+              <HStack>
+                <Text fontSize={"lg"}>Items: {items.length}</Text>
+                <Text fontSize={"lg"}>Quantities: {totalQuantity}</Text>
+              </HStack>
               <Text fontSize={"lg"} as={"strong"}>
                 Total: {currencyFormat(total)}
               </Text>

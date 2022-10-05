@@ -37,7 +37,7 @@ export const CartItem = ({ item }) => {
         {/* <Text fontWeight={"bold"}>Price: €15.99</Text>
         <Text fontWeight={"bold"}>Total: €31.98</Text> */}
       </HStack>
-      <Button onClick={() => hanldeRemoveItem(item.id)} role={"button"}>
+      <Button onClick={() => hanldeRemoveItem(item.id)} mt={3} role={"button"}>
         Remove
       </Button>
     </Box>
