@@ -23,3 +23,15 @@ export const currencyFormat = (price, currency = "EUR") => {
     price
   );
 };
+
+export const debounce = (cb, d) => {
+  let timer;
+
+  return (...args) => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      // console.log(args);
+      cb(...args);
+    }, d);
+  };
+};

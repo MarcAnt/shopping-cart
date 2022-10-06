@@ -62,6 +62,11 @@ export const Cart = () => {
             w={5}
             bg={"red.500"}
             color={"white"}
+            fontSize={"sm"}
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            textAlign={"center"}
             data-testid="cart-counter"
           >
             {totalQuantity}

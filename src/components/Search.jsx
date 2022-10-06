@@ -9,12 +9,22 @@ import {
 import { useDispatch } from "react-redux";
 
 import { BiSearchAlt2 } from "react-icons/bi";
-import { filterTitle } from "../redux/features/productsSlice";
+import { filtersBy, filterTitle } from "../redux/features/productsSlice";
+import { debounce } from "@/utilities/index";
+
+const filters = Object.keys(filtersBy);
 
 const Search = ({ placeholder, label }) => {
-  const [search, setSearch] = useState({ type: [], value: "" });
+  const [search, setSearch] = useState({
+    type: filters,
+    value: "",
+  });
 
   const dispatch = useDispatch();
+
+  const handleSearch = debounce((e) => {
+    setSearch({ type: filters, value: e.target.value });
+  }, 1000);
 
   useEffect(() => {
     dispatch(filterTitle(search));
@@ -40,11 +50,7 @@ const Search = ({ placeholder, label }) => {
           _placeholder={{
             color: "brand.primary",
           }}
-          value={search.value}
-          // onChange={(e) => setSearch({ ...search, value: e.target.value })}
-          onChange={(e) =>
-            setSearch({ type: ["title", "description"], value: e.target.value })
-          }
+          onChange={handleSearch}
           role={"searchbox"}
         />
       </InputGroup>
